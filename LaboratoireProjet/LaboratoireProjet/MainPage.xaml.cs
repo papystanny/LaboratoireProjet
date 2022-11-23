@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +25,37 @@ namespace LaboratoireProjet
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+
+        private void NavigationView_SelectionChanged(Windows.UI.Xaml.Controls.NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var item = (NavigationViewItem)args.SelectedItem;
+            header.Text = item.Content.ToString();              // Code pour alle attraper le header indiqué lorsqu'on clique sue un item du Navigattion 
+
+            switch (item.Name)
+            {
+                case "ajoutEmploye":
+                    mainFrame.Navigate(typeof());
+                    break;
+
+                case "ajoutProjet":
+                    mainFrame.Navigate(typeof());
+                    break;
+
+                case "afficahgeEmploye":
+                    mainFrame.Navigate(typeof());
+                    break;
+
+                case "recherche":
+                    mainFrame.Navigate(typeof());
+                    break;
+                
+
+                default:
+                    break;
+
+            }
         }
     }
 }
