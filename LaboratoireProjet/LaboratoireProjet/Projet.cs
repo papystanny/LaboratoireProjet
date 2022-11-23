@@ -12,7 +12,7 @@ namespace LaboratoireProjet
         string dateDebut;
         int budget;
         string description;
-        int matriculeEmp;
+        string matriculeEmp;
 
         public int NumProjet { get => numProjet; set => numProjet = value; }
         public string DateDebut { get => dateDebut; set => dateDebut = value; }
