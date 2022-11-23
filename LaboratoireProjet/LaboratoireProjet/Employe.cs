@@ -8,7 +8,7 @@ namespace LaboratoireProjet
 {
     internal class Employe
     {
-        int id;
+        string matricule;
         string nom;
         string prenom;
 
