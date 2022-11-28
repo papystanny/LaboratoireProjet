@@ -25,6 +25,7 @@ namespace LaboratoireProjet
         public MainPage()
         {
             this.InitializeComponent();
+            mainFrame.Navigate(typeof(AjoutProjet));
         }
     }
 }

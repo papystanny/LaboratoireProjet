@@ -11,6 +11,7 @@ namespace LaboratoireProjet
         string matricule;
         string nom;
         string prenom;
+        int id;
 
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
