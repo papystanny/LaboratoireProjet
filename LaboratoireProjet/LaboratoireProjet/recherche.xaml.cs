@@ -27,27 +27,9 @@ namespace LaboratoireProjet
             this.InitializeComponent();
         }
 
-        //private void autoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        //{
-        //    List<string> suggestions = new List<string>();
-
-        //    foreach (var texte in Gestion.)
-        //    {
-        //        if (texte.Contains(autoSuggestBox.Text))
-        //            suggestions.Add(texte);
-        //    }
-
-        //    if (suggestions.Count == 0)
-        //        suggestions.Add("Aucun résultat");
-
-        //    autoSuggestBox.ItemsSource = suggestions;
-        //}
-
-        //private void autoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        //{
-        //    //on traite le texte entré dans la autoSuggestBox
-        //}
-
-
+        private void autoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            autoSuggestBox.ItemsSource = Gestion.getInstance().choixEmp(autoSuggestBox.Text);
+        }
     }
 }
