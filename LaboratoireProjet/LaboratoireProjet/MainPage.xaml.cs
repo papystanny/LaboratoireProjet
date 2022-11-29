@@ -22,10 +22,42 @@ namespace LaboratoireProjet
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        List<string> liste = new List<string>();
         public MainPage()
         {
             this.InitializeComponent();
-            mainFrame.Navigate(typeof(AjoutProjet));
+        }
+
+
+        private void NavigationView_SelectionChanged(Windows.UI.Xaml.Controls.NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var item = (NavigationViewItem)args.SelectedItem;
+            header.Text = item.Content.ToString();              // Code pour alle attraper le header indiqué lorsqu'on clique sue un item du Navigattion 
+
+            switch (item.Name)
+            {
+                case "ajoutEmploye":
+                    mainFrame.Navigate(typeof(AjouterEmploye));
+                    break;
+
+                case "ajoutProjet":
+                    mainFrame.Navigate(typeof());
+                    break;
+
+                case "affichageProjet":
+                    mainFrame.Navigate(typeof(Liste));
+                    break;
+
+                case "recherche":
+                    mainFrame.Navigate(typeof(Recherche));
+                    break;
+
+
+                default:
+                    break;
+
+
+            }
         }
     }
 }
