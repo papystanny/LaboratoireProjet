@@ -12,7 +12,7 @@ namespace LaboratoireProjet
     {
         string numProjet;
         string dateDebut;
-        double budget;
+        int budget;
         string description;
         string matriculeEmp;
         string nomEmploye;
@@ -20,7 +20,7 @@ namespace LaboratoireProjet
 
         public string NumProjet { get => numProjet; set => numProjet = value; }
         public string DateDebut { get => dateDebut; set => dateDebut = value; }
-        public double Budget { get => budget; set => budget = value; }
+        public int Budget { get => budget; set => budget = value; }
         public string Description { get => description; set => description = value; }
         public string MatriculeEmp { get => matriculeEmp; set => matriculeEmp = value; }
         public string NomEmploye { get => nomEmploye; set => nomEmploye = value; }

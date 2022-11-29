@@ -9,9 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
-    <Frame x:Name="mainFraime">
+    <Frame x:Name="mainFrame">
         <ScrollViewer>
-            <StackPanel>
+            <StackPanel Margin="0,40">
                 <TextBlock Text="Nouveau Employé" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center"/>
                 <TextBox x:Name="nom" Header= "Nom" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Center" />
                 <TextBox x:Name="erreurNom" Text="Veuillez entrer un nom " Margin="0,0,0,0" MaxLength="32" Visibility="Collapsed" Width="400" HorizontalAlignment="Center" FontSize="11" Foreground="#FFD72F2F" />
@@ -21,7 +21,7 @@
                 <TextBox x:Name="erreurMatricule" Text="Veuillez entrer un matricle " Margin="0,0,0,0" MaxLength="32" Visibility="Collapsed" Width="400" HorizontalAlignment="Center" FontSize="11" Foreground="#FFD72F2F" />
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Button Content="Enregistrer" Margin="0,24" Click="SaveButton_Click" />
-                    <Button Content="Anuler" Margin="24" Click="CancelButton_Click"/>
+                    <Button Content="Anuler" Margin="24"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
