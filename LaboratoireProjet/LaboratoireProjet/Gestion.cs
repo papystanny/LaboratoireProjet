@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -97,7 +98,7 @@ namespace LaboratoireProjet
             listeProject.Clear();
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT numero, budget, description, debut, e.nom, e.prenom FROM projet p JOIN employe e ON p.employe =  e.matricule WHERE p.employe = e.matricule;";
+            commande.CommandText = "SELECT numero, budget, description, debut, employe ,e.nom, e.prenom FROM projet p JOIN employe e ON p.employe =  e.matricule WHERE p.employe = e.matricule;";
             con.Open();
             MySqlDataReader r = commande.ExecuteReader();
             try
@@ -109,10 +110,10 @@ namespace LaboratoireProjet
                         NumProjet = r.GetString("numero"),
                         DateDebut = r.GetString("debut"),
                         Description = r.GetString("description"),
+                        MatriculeEmp = r.GetString("employe"),
                         Budget = r.GetInt32("budget"),
                         NomEmploye = r.GetString("prenom"),
                         PrenomEmploye = r.GetString("nom")
-
                     };
                     listeProject.Add(c);
 
@@ -130,13 +131,13 @@ namespace LaboratoireProjet
         }
 
         // Pouvoir Rechercher Employe 
-        public ObservableCollection<Employe> GetEmployes(String name)
+        public ObservableCollection<Employe> GetEmployes()
         {
 
             listeEmploye.Clear();
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "Select * FROM employe LIKE nom =  " + "name";
+            commande.CommandText = "Select * FROM employe";
             con.Open();
             MySqlDataReader r = commande.ExecuteReader();
             try
@@ -152,7 +153,8 @@ namespace LaboratoireProjet
                     listeEmploye.Add(c);
 
                 }
-                r.Close(); con.Close();
+                r.Close(); 
+                con.Close();
             }
             catch (MySqlException ex)
             {
@@ -164,10 +166,45 @@ namespace LaboratoireProjet
 
         }
 
+        public ObservableCollection<Employe> choixEmp(string nom)
+        { 
+            ObservableCollection<Employe> listeChoix = new ObservableCollection<Employe>();
 
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "Select * from employe where nom like @nom;";
 
+            commande.Parameters.AddWithValue("@nom", "%" + nom + "%");
 
+            con.Open();
+            commande.Prepare();
+            MySqlDataReader r = commande.ExecuteReader();
 
+            try
+            {
+                while (r.Read())
+                {
+                    Employe c = new Employe()
+                    {
+                        Matricule = r.GetString("matricule"),
+                        Nom = r.GetString("nom"),
+                        Prenom = r.GetString("prenom")
+                    };
+                    listeChoix.Add(c);
 
+                }
+                r.Close(); 
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+            return listeChoix;
+        }
     }
-}
+
+ }
+

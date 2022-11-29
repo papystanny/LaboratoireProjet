@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -67,9 +68,14 @@ namespace LaboratoireProjet
                 ErrDesciption.Visibility = Visibility.Visible;
                 valide = false;
             }
-            if (emp.Text.Trim() == "")
+            if (ChoixEmp.Text.Trim() == "")
             {
                 ErrEmp.Visibility = Visibility.Visible;
+                valide = false;
+            }
+            if (matricule.Text.Trim() == "")
+            {
+                ErrMatricule.Visibility = Visibility.Visible;
                 valide = false;
             }
 
@@ -81,12 +87,17 @@ namespace LaboratoireProjet
                     DateDebut = dateDébut.Text,
                     Budget = Convert.ToInt32(budget.Text),
                     Description = description.Text,
-                    MatriculeEmp = emp.Text
+                    MatriculeEmp = matricule.Text
                 };
 
                 Gestion.getInstance().insererProjet(p);
                 mainFrame.Navigate(typeof(Liste));
             }
+        }
+
+        private void ChoixEmp_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            ChoixEmp.ItemsSource = Gestion.getInstance().choixEmp(ChoixEmp.Text);
         }
     }
 }
