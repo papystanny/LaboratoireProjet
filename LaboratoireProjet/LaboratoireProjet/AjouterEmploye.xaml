@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="LaboratoireProjet.AjouterEmploye"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LaboratoireProjet"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Frame x:Name="mainFraime">
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock Text="Nouveau Employé" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center"/>
+                <TextBox x:Name="nom" Header= "Nom" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Center" />
+                <TextBox x:Name="erreurNom" Text="Veuillez entrer un nom " Margin="0,0,0,0" MaxLength="32" Visibility="Collapsed" Width="400" HorizontalAlignment="Center" FontSize="11" Foreground="#FFD72F2F" />
+                <TextBox x:Name="prenom" Header="Prenom" Margin="0,24,0,0" MaxLength="15" Width="400" HorizontalAlignment="Center"  />
+                <TextBox x:Name="erreurPrenom" Text="Veuillez entrer un prenom " Margin="0,0,0,0" MaxLength="32" Visibility="Collapsed" Width="400" HorizontalAlignment="Center" FontSize="11" Foreground="#FFD72F2F" />
+                <TextBox x:Name="matricule" Header="Matricule" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Center"/>
+                <TextBox x:Name="erreurMatricule" Text="Veuillez entrer un matricle " Margin="0,0,0,0" MaxLength="32" Visibility="Collapsed" Width="400" HorizontalAlignment="Center" FontSize="11" Foreground="#FFD72F2F" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Content="Enregistrer" Margin="0,24" Click="SaveButton_Click" />
+                    <Button Content="Anuler" Margin="24" Click="CancelButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Frame>
+
+</Page>
