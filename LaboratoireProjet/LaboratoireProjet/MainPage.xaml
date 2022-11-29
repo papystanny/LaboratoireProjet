@@ -14,16 +14,16 @@
             <RowDefinition Height="43*"/>
         </Grid.RowDefinitions>
         <NavigationView x:Name="nvSample"
-    IsSettingsVisible="True"
-    IsBackButtonVisible="Auto"
-    IsBackEnabled="True"
- 
-    AlwaysShowHeader="True"
-    PaneTitle="            GestionTr"
-    PaneDisplayMode="Left"
-    ExpandedModeThresholdWidth="500"
-    SelectionFollowsFocus="Enabled"
-    IsTabStop="True" Margin="-10,10,10,-10" Grid.RowSpan="2" HorizontalAlignment="Stretch" FontSize="14" >
+                        IsSettingsVisible="True"
+                        IsBackButtonVisible="Auto"
+                        IsBackEnabled="True"
+                        SelectionChanged="nvSample_SelectionChanged"
+                        AlwaysShowHeader="True"
+                        PaneTitle="            GestionTr"
+                        PaneDisplayMode="Left"
+                        ExpandedModeThresholdWidth="500"
+                        SelectionFollowsFocus="Enabled"
+                        IsTabStop="True" Margin="-10,10,10,-10" Grid.RowSpan="2" HorizontalAlignment="Stretch" FontSize="14">
 
             <!-- Code pour le header -->
             <NavigationView.Header>
@@ -37,13 +37,13 @@
                 <!-- Structure de l'invité // connecter // créer un compte  -->
                 <NavigationViewItemHeader x:Name="inviteHeader" Content="Options" HorizontalAlignment="Center"/>
                 <NavigationViewItemSeparator  />
-                <NavigationViewItem  Content="Add employe" Name="ajoutEmploye" Icon="PhoneBook" Background="#FF546F71"  />
+                <NavigationViewItem  Content="Ajouter un employé" Name="ajoutEmploye" Icon="PhoneBook" Background="#FF546F71"  />
                 <NavigationViewItemSeparator  />
-                <NavigationViewItem Content="Add project" Name="ajoutProjet" Icon="add" Background="#FF745555"/>
+                <NavigationViewItem Content="Ajouter un projet" Name="ajoutProjet" Icon="add" Background="#FF745555"/>
                 <NavigationViewItemSeparator  />
-                <NavigationViewItem Content="Project" Name="affichageProjet" Icon="List" Background="#FF745555"/>
+                <NavigationViewItem Content="Liste des projets" Name="affichageProjet" Icon="List" Background="#FF745555"/>
                 <NavigationViewItemSeparator  />
-                <NavigationViewItem Content="Reseacrh" Name="recherche" Icon="Find" Background="#FF745555"/>
+                <NavigationViewItem Content="Rechercher un employé" Name="recherche" Icon="Find" Background="#FF745555"/>
 
 
 
@@ -60,7 +60,7 @@
 
             <!-- Code pour la barre de recherhe  -->
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
+                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" PlaceholderText="Rechercher un projet" />
             </NavigationView.AutoSuggestBox>
 
             <!-- Début du footer  -->

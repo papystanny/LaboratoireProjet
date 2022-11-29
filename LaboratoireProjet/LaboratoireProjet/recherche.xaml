@@ -10,8 +10,9 @@
 
     <Grid Margin="0,60,0,0">
         <AutoSuggestBox x:Name="autoSuggestBox" QueryIcon="Find"
-                PlaceholderText="Veuillez entrer le nom de l'employé que vous voulez rechercher"
-                TextChanged="autoSuggestBox_TextChanged" Background="#FFB35656" HorizontalAlignment="Center"/>
+                PlaceholderText="Entrez ici le nom de l'employé que vous rechercher"
+                Background="#FFB35656" HorizontalAlignment="Center"
+                Width="355"/>
 
     </Grid>
 </Page>

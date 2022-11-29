@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
 
-        <Grid.Background>
+        <!--<Grid.Background>
             <ImageBrush ImageSource="https://static.wikia.nocookie.net/ssb/images/2/2a/Shinku_Hadoken.gif/revision/latest?cb=20150718004206"/>
-        </Grid.Background>
+        </Grid.Background>-->
         <Frame x:Name="mainFrame">
-            <GridView x:Name="listeProjet">
+            <GridView x:Name="listeProjet" Margin="30,0">
                 <GridView.ItemTemplate>
 
                     <DataTemplate x:DataType="local:Projet">
@@ -24,11 +24,18 @@
                                 <ImageBrush/>
                             </StackPanel.Background>
 
-                            <TextBlock Text="{x:Bind NumProjet}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
-                            <TextBlock Text="{x:Bind Budget}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="20"/>
-                            <TextBlock Text="{x:Bind Description}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
-                            <TextBlock Text="{x:Bind NomEmploye}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="20"/>
-                            <TextBlock Text="{x:Bind PrenomEmploye}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="20"/>
+                            <TextBlock Text="Numéro du projet:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind NumProjet}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+
+                            <TextBlock Text="Budget Alloué:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind Budget}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+
+                            <TextBlock Text="Description:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind Description}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+
+                            <TextBlock Text="Employé responsable:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind NomEmploye}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+                            <TextBlock Text="{x:Bind PrenomEmploye}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
 
 
                         </StackPanel>

@@ -44,9 +44,9 @@ namespace LaboratoireProjet
                 commande.Connection = con;
                 commande.CommandText = "insert into employe values( @matricule, @nom, @prenom) ";
 
-                commande.Parameters.AddWithValue("@categorie", c.Matricule);
-                commande.Parameters.AddWithValue("@prix", c.Nom);
-                commande.Parameters.AddWithValue("@ville", c.Prenom);
+                commande.Parameters.AddWithValue("@matricule", c.Matricule);
+                commande.Parameters.AddWithValue("@nom", c.Nom);
+                commande.Parameters.AddWithValue("@prenom", c.Prenom);
 
                 con.Open();
                 commande.Prepare();
@@ -56,7 +56,8 @@ namespace LaboratoireProjet
             }
             catch (MySqlException ex)
             {
-                //message d'erreur
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
             }
         }
 
@@ -68,7 +69,7 @@ namespace LaboratoireProjet
             {
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
-                commande.CommandText = "insert into employe values( @numero, @debut, @budget,@description, @employe) ";
+                commande.CommandText = "insert into projet values( @numero, @debut, @budget,@description, @employe)";
 
                 commande.Parameters.AddWithValue("@numero", c.NumProjet);
                 commande.Parameters.AddWithValue("@debut", c.DateDebut);
@@ -85,7 +86,8 @@ namespace LaboratoireProjet
             }
             catch (MySqlException ex)
             {
-                //message d'erreur
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
             }
         }
 
@@ -95,7 +97,7 @@ namespace LaboratoireProjet
             listeProject.Clear();
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "Select numero, debut, budget, description, nom, prenom  FROM projet p INNER JOIN employe e on p.employe = e.matricule;";
+            commande.CommandText = "SELECT numero, budget, description, debut, e.nom, e.prenom FROM projet p JOIN employe e ON p.employe =  e.matricule WHERE p.employe = e.matricule;";
             con.Open();
             MySqlDataReader r = commande.ExecuteReader();
             try
@@ -104,10 +106,10 @@ namespace LaboratoireProjet
                 {
                     Projet c = new Projet()
                     {
-                        NumProjet = r.GetString("matricule"),
-                        DateDebut = r.GetString("date"),
+                        NumProjet = r.GetString("numero"),
+                        DateDebut = r.GetString("debut"),
                         Description = r.GetString("description"),
-                        Budget = r.GetDouble("budget"),
+                        Budget = r.GetInt32("budget"),
                         NomEmploye = r.GetString("prenom"),
                         PrenomEmploye = r.GetString("nom")
 
@@ -115,7 +117,8 @@ namespace LaboratoireProjet
                     listeProject.Add(c);
 
                 }
-                r.Close(); con.Close();
+                r.Close(); 
+                con.Close();
             }
             catch (MySqlException ex)
             {

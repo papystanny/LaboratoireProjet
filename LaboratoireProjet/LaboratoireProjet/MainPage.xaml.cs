@@ -29,7 +29,7 @@ namespace LaboratoireProjet
         }
 
 
-        private void NavigationView_SelectionChanged(Windows.UI.Xaml.Controls.NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void nvSample_SelectionChanged(Windows.UI.Xaml.Controls.NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
             header.Text = item.Content.ToString();              // Code pour alle attraper le header indiqué lorsqu'on clique sue un item du Navigattion 
@@ -41,7 +41,7 @@ namespace LaboratoireProjet
                     break;
 
                 case "ajoutProjet":
-                    mainFrame.Navigate(typeof());
+                    mainFrame.Navigate(typeof(AjoutProjet));
                     break;
 
                 case "affichageProjet":
@@ -49,7 +49,7 @@ namespace LaboratoireProjet
                     break;
 
                 case "recherche":
-                    mainFrame.Navigate(typeof(Recherche));
+                    mainFrame.Navigate(typeof(recherche));
                     break;
 
 
@@ -58,6 +58,7 @@ namespace LaboratoireProjet
 
 
             }
-        }
+        }    
     }
 }
+

@@ -35,8 +35,7 @@ namespace LaboratoireProjet
             ErrDesciption.Visibility = Visibility.Collapsed;
             ErrEmp.Visibility = Visibility.Collapsed;
         }
-        //string desc;
-        //description.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out desc);
+        
         private void btn_ajout_Click(object sender, RoutedEventArgs e)
         {
             bool valide = true;
@@ -52,12 +51,18 @@ namespace LaboratoireProjet
                 ErrBudget.Visibility = Visibility.Visible;
                 valide = false;
             }
+            else if (Convert.ToInt32(budget.Text) < 10000 || Convert.ToInt32(budget.Text) > 100000)
+            {
+                ErrBudget.Text = "Le coût du projet doit être compris entre 10 000$ et 100 000$";
+                ErrBudget.Visibility = Visibility.Visible;
+                valide = false;
+            }
             if (dateDébut.Text.Trim() == "")
             {
                 ErrDate.Visibility = Visibility.Visible;
                 valide = false;
             }
-            if (description == null)
+            if (description.Text.Trim() == "")
             {
                 ErrDesciption.Visibility = Visibility.Visible;
                 valide = false;
@@ -69,8 +74,18 @@ namespace LaboratoireProjet
             }
 
             if (valide)
-            { 
-                
+            {
+                Projet p = new Projet()
+                {
+                    NumProjet = numProjet.Text,
+                    DateDebut = dateDébut.Text,
+                    Budget = Convert.ToInt32(budget.Text),
+                    Description = description.Text,
+                    MatriculeEmp = emp.Text
+                };
+
+                Gestion.getInstance().insererProjet(p);
+                mainFrame.Navigate(typeof(Liste));
             }
         }
     }
