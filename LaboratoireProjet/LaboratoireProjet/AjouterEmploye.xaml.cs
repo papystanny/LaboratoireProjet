@@ -74,7 +74,7 @@ namespace LaboratoireProjet
                     Matricule = matricule.Text
                 };
                 Gestion.getInstance().insererEmploye(c);
-                mainFrame.Navigate(typeof(Liste));
+                
             }
         }
     }

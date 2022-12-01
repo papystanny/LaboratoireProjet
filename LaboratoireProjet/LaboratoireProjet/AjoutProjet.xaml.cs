@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.SmartCards;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Capture.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +28,7 @@ namespace LaboratoireProjet
         public AjoutProjet()
         {
             this.InitializeComponent();
+            nomEmploye.ItemsSource = Gestion.getInstance().GetEmployes();
         }
 
         private void reset()
@@ -34,13 +37,14 @@ namespace LaboratoireProjet
             ErrBudget.Visibility = Visibility.Collapsed;
             ErrDate.Visibility = Visibility.Collapsed;
             ErrDesciption.Visibility = Visibility.Collapsed;
-            ErrEmp.Visibility = Visibility.Collapsed;
+            // ErrEmp.Visibility = Visibility.Collapsed;
         }
-        
-        private void btn_ajout_Click(object sender, RoutedEventArgs e)
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             bool valide = true;
             reset();
+            
 
             if (numProjet.Text.Trim() == "")
             {
@@ -58,46 +62,29 @@ namespace LaboratoireProjet
                 ErrBudget.Visibility = Visibility.Visible;
                 valide = false;
             }
-            if (dateDébut.Text.Trim() == "")
-            {
-                ErrDate.Visibility = Visibility.Visible;
-                valide = false;
-            }
-            if (description.Text.Trim() == "")
+
+            if (description.ToString().Trim() == "")
             {
                 ErrDesciption.Visibility = Visibility.Visible;
                 valide = false;
             }
-            if (ChoixEmp.Text.Trim() == "")
-            {
-                ErrEmp.Visibility = Visibility.Visible;
-                valide = false;
-            }
-            if (matricule.Text.Trim() == "")
-            {
-                ErrMatricule.Visibility = Visibility.Visible;
-                valide = false;
-            }
-
             if (valide)
             {
+                //string mat = Gestion.getInstance().getMat(nomEmploye.SelectedItem.ToString());
+                nomEmploye.SelectedIndex = 1;
+
                 Projet p = new Projet()
                 {
                     NumProjet = numProjet.Text,
-                    DateDebut = dateDébut.Text,
+                    DateDebut = date.Date.Value.ToString("yyyy-MM-dd"),
                     Budget = Convert.ToInt32(budget.Text),
                     Description = description.Text,
-                    MatriculeEmp = matricule.Text
+                    MatriculeEmp = Gestion.getInstance().GetEmployes()[nomEmploye.SelectedIndex + 1].Matricule
                 };
 
                 Gestion.getInstance().insererProjet(p);
-                mainFrame.Navigate(typeof(Liste));
+                
             }
-        }
-
-        private void ChoixEmp_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            ChoixEmp.ItemsSource = Gestion.getInstance().choixEmp(ChoixEmp.Text);
         }
     }
 }

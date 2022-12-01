@@ -19,7 +19,7 @@
                         IsBackEnabled="True"
                         SelectionChanged="nvSample_SelectionChanged"
                         AlwaysShowHeader="True"
-                        PaneTitle="            GestionTr"
+                        PaneTitle="              GestionTr"
                         PaneDisplayMode="Left"
                         ExpandedModeThresholdWidth="500"
                         SelectionFollowsFocus="Enabled"
@@ -44,7 +44,8 @@
                 <NavigationViewItem Content="Liste des projets" Name="affichageProjet" Icon="List" Background="#FF745555"/>
                 <NavigationViewItemSeparator  />
                 <NavigationViewItem Content="Rechercher un employé" Name="recherche" Icon="Find" Background="#FF745555"/>
-
+                <NavigationViewItemSeparator  />
+                <NavigationViewItem Content="Rechercher un projet" Name="rechercheP" Icon="Find" Background="#FF745555"/>
 
 
                 <NavigationViewItem Content="Acceuil" Visibility="Collapsed"  Name="homeClient" Icon="Home" Background="#FFB37893"/>
@@ -59,9 +60,9 @@
             </NavigationView.PaneCustomContent>
 
             <!-- Code pour la barre de recherhe  -->
-            <NavigationView.AutoSuggestBox>
+            <!--<NavigationView.AutoSuggestBox>
                 <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" PlaceholderText="Rechercher un projet" />
-            </NavigationView.AutoSuggestBox>
+            </NavigationView.AutoSuggestBox>-->
 
             <!-- Début du footer  -->
             <NavigationView.PaneFooter>
