@@ -9,11 +9,35 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0" HorizontalAlignment="Center">
 
     <Grid Margin="0,60,0,0">
-        <AutoSuggestBox x:Name="autoSuggestBox" QueryIcon="Find"
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <AutoSuggestBox x:Name="autoSuggestBox" QueryIcon="Find"
                 PlaceholderText="Entrez ici le nom de l'employé que vous rechercher"
                 Background="#FFB35656" HorizontalAlignment="Center"
                 Width="355"
                 TextChanged="autoSuggestBox_TextChanged"/>
 
+            <Button x:Name="btn_click" Click="btn_click_1" Content="Rechercher" HorizontalAlignment="Center" Margin="0,20"/>
+
+            <GridView x:Name="searchEmp" Margin="30,0">
+                <GridView.ItemTemplate>
+
+                    <DataTemplate x:DataType="local:Employe">
+
+                        <StackPanel Orientation="Vertical"
+                                Margin="12,5" HorizontalAlignment="Stretch">
+                            
+                            <TextBlock Text="Résultat de la recherche:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind Nom}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+                            <TextBlock Text="{x:Bind Prenom}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+
+            </GridView>
+
+        </StackPanel>
     </Grid>
 </Page>

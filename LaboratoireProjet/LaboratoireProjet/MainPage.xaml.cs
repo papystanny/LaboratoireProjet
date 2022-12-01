@@ -52,6 +52,10 @@ namespace LaboratoireProjet
                     mainFrame.Navigate(typeof(recherche));
                     break;
 
+                case "rechercheP":
+                    mainFrame.Navigate(typeof(rechercheP));
+                    break;
+
 
                 default:
                     break;

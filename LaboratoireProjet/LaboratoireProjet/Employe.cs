@@ -27,5 +27,10 @@ namespace LaboratoireProjet
         { 
             return nom + " " + prenom;
         }
+
+        public string nomEmp()
+        {
+            return nom;
+        }
     }
 }

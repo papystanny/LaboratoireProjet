@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="LaboratoireProjet.rechercheP"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LaboratoireProjet"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            <DatePicker SelectedDate="{Binding DateTime,Mode=TwoWay}" x:Name="date"  Header="Choisir une date" Width = " 400 "    Margin = " 0,10 " HorizontalAlignment="Center" ></DatePicker>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Content="Rechercher" Margin="0,24" Click="SaveButton_Click" />
+            </StackPanel>
+
+            <GridView x:Name="Affiche" Margin="30,0">
+                <GridView.ItemTemplate>
+
+                    <DataTemplate x:DataType="local:Projet">
+
+                        <StackPanel Orientation="Vertical"
+                                Margin="12,5" HorizontalAlignment="Stretch">
+                            <StackPanel.Background>
+                                <ImageBrush/>
+                            </StackPanel.Background>
+
+                            <TextBlock Text="Numéro du projet:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind NumProjet}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+
+                            <TextBlock Text="Budget Alloué:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind Budget}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+
+                            <TextBlock Text="Description:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind Description}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+
+                            <TextBlock Text="Date de début:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind DateDebut}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+
+                            <TextBlock Text="Employé responsable:" HorizontalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="{x:Bind NomEmploye}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+                            <TextBlock Text="{x:Bind PrenomEmploye}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="16"/>
+
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+
+            </GridView>
+        </StackPanel>
+
+    </Grid>
+</Page>
+
+    

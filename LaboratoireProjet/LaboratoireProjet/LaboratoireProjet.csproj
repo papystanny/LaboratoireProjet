@@ -138,6 +138,9 @@
     <Compile Include="recherche.xaml.cs">
       <DependentUpon>recherche.xaml</DependentUpon>
     </Compile>
+    <Compile Include="rechercheP.xaml.cs">
+      <DependentUpon>rechercheP.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -176,6 +179,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="recherche.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="rechercheP.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

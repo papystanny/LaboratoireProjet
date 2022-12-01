@@ -20,21 +20,17 @@ namespace LaboratoireProjet
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class recherche : Page
+    public sealed partial class rechercheP : Page
     {
-        public recherche()
+        public rechercheP()
         {
             this.InitializeComponent();
         }
 
-        private void autoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            autoSuggestBox.ItemsSource = Gestion.getInstance().choixEmp(autoSuggestBox.Text);
-        }
-
-        private void btn_click_1(object sender, RoutedEventArgs e)
-        {
-            searchEmp.ItemsSource = Gestion.getInstance().choixEmp(autoSuggestBox.Text);
+            Affiche.ItemsSource = Gestion.getInstance().rechercheProjet(date.Date.Date.ToString("yyy-MM-dd"));
+            //Console.WriteLine(date.Date.ToString("yyyy-MM-dd"));
         }
     }
 }
